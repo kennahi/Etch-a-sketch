@@ -2,17 +2,43 @@
 <html lang="en">
 
 <head>
-	<link rel="stylesheet" href="style.css">
-	<meta charset="UTF-8">
-	<title>Etch-a-sketch</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Etch-a-sketch</title>
 </head>
 
 <body>
-	<div class="canvas">
-
-	</div>
-
-	<script type="text/javascript" src="sketch.js"></script>
+    <div class="title">
+        <div class="Etch">
+            Etch-a-sketch
+        </div>
+    </div>
+    <div class="content">
+        <div class="options">
+            <div class="draw">
+                Draw
+            </div>
+            <div class="eraser">
+                Erase
+            </div>
+            <div class="gridLines">
+                Toggle grid
+            </div>
+            <div class="color">
+                Color
+                <input type="color" class="colorPicker">
+            </div>
+            <div class="GridSize">
+                <input type="range" min="1x1" max="100x100" value="16x16" class="slider">
+                
+            </div>
+            <div class="clear">
+                Clear
+            </div>
+        </div>
+        <div class="canvas"></div>
+    </div>
+    <script type="text/javascript" src="sketch.js"></script>
 </body>
 
 </html>

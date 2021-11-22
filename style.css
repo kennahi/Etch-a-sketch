@@ -2,28 +2,78 @@
     border: black;
     border-style: solid;
     border-width: 2px;
-    width: 700px;
-    height: 700px;
-	display: flex;
-	flex-wrap: wrap;
-	box-sizing: content-box;
+    width: 670px;
+    height: 670px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: content-box;
 }
 
 .gridSquare {
-	width: calc(700px/16);
-	height: calc(700px/16);
-	border: black solid 1px;
-	box-sizing: border-box;
+    width: calc(670px/16);
+    height: calc(670px/16);
+    border: black solid 1px;
+    box-sizing: border-box;
+    background-color: white;
 }
 
 .blacked {
-	background-color: black;
+    background-color: black;
+}
+
+.removed {
+    border: white 0px;
 }
 
 html {
-    height: 100%;
     display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center; 
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 45px;
+    padding-top: 30px;
+    font-size: 50px;
+}
+
+.options {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+}
+
+body {
+    margin: 0px;
+}
+
+.clear {
+margin-top: 250px;
+}
+
+.eraser,
+.draw,
+.gridLines,
+.clear,
+.color {
+    border: solid 1px black;
+    padding: 10px 25px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-size: 20px;
+    text-align: center;
+}
+
+.eraser:hover,
+.draw:hover,
+.gridLines:hover,
+.clear:hover,
+.color:hover {
+    background-color: lightgrey;
 }
