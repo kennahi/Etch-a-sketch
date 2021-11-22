@@ -19,6 +19,8 @@
 
 .blacked {
     background-color: black;
+    color: white;
+    border: solid 1px white;
 }
 
 .removed {
@@ -55,6 +57,14 @@ body {
 
 .clear {
 margin-top: 250px;
+}
+
+.gridSize {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .eraser,
