@@ -4,87 +4,170 @@ const draw = document.querySelector(".draw");
 const gridder = document.querySelector(".gridLines");
 const clear = document.querySelector(".clear");
 const coloring = document.querySelector(".colorPicker");
+const slider = document.querySelector(".slider");
+const gridValeur = document.querySelector(".gridValue");
+/*-----------*/
 let currentColor = '#000000';
+let currentSize = 16;
 let color = 1;
 let gridToggle = 1;
 let realColor;
-let firstButton = 1;
-let secondButton = 0;
+let gridValue;
+let access = 0;
+let diva;
+let grid;
+let divs;
+/*-----------*/
 
-let i = 0;
-for (i; i < 16; i++) {
-    for (let j = 0; j < 16; j++) {
-        let grid = document.createElement("div");
-        grid.className = "gridSquare";
-        canvas.appendChild(grid);
+setupGrid();
+draw.classList.add('blacked');
+
+
+/* ----------functions ----------*/
+
+function changeColor(e) {
+    if (color == 1) {
+        e.target.style.backgroundColor = currentColor;
+        // e.target.style.border = '0px';
+        // e.target.setAttribute('style', 'backgroundColor:' + currentColor);
+        
     }
+    else if (color == 0)
+        e.target.style.backgroundColor = '#FFFFFF';
 }
 
-function setCurrentColor(newColor) {
-    currentColor = newColor;
+function cleared() {
+    draw.classList.remove('blacked');
+    gridder.classList.remove('blacked');
+    eraser.classList.remove('blacked');
+    let len = diva.length;
+    for (let i = 0; i < len; i++) {
+        diva[i].style.backgroundColor = '#FFFFFF';
+    }
+    clear.classList.add('blacked');
+    color = 3;
 }
 
-//goes through the function whenever there is a change in [coloring]
-coloring.onchange = (e) => setCurrentColor(e.target.value);
 
-eraser.addEventListener('click', () => {
+
+function erased() {
     color = 0;
     eraser.classList.add('blacked');
     draw.classList.remove('blacked');
     clear.classList.remove('blacked');
     gridder.classList.remove('blacked');
+}
+
+
+function setCurrentColor(newColor) {
+    currentColor = newColor;
+}
+
+function setCurrentSize(newSize) {
+    draw.classList.remove('blacked');
+    clear.classList.remove('blacked');
+    gridder.classList.remove('blacked');
+    eraser.classList.remove('blacked');
+    currentSize = newSize;
+    access = 1;
+    console.log("test" + currentSize);
+    let len = diva.length;
+    for (let i = 0; i < len; i++) {
+        diva[i].style.backgroundColor = '#FFFFFF';
+    }
+    setupGrid();
+    len = diva.length;
+    for (i = 0; i < len; i++) {
+        diva[i].style.width = "calc(800px/" + currentSize + ")";
+        diva[i].style.height = "calc(800px/" + currentSize + ")";
+    }
+    divs = document.querySelectorAll('.gridSquare');
+}
+
+function setupGrid() {
+    if (access == 1) {
+        document.querySelectorAll('.gridSquare').forEach(e => e.remove());
+        access = 0;
+    }
+
+    for (let d = 0; d < currentSize; d++) {
+        for (let j = 0; j < currentSize; j++) {
+            grid = document.createElement("div");
+            grid.className = "gridSquare";
+            canvas.appendChild(grid);
+        }
+    }
+    diva = document.querySelectorAll(".gridSquare");
+}
+
+/*---------------------events--------------*/
+
+
+
+// let gridSquare = document.querySelectorAll(".gridSquare");
+
+// let divs = document.querySelectorAll(".gridSquare");
+
+
+
+
+
+eraser.addEventListener('click', () => {
+    erased();
 });
 
 draw.addEventListener('click', () => {
     color = 1;
+    divs = document.querySelectorAll('.gridSquare');
+    divs.forEach(div => div.addEventListener('mouseover', changeColor));
     draw.classList.add('blacked');
     gridder.classList.remove('blacked');
     clear.classList.remove('blacked');
     eraser.classList.remove('blacked');
 });
 
-let divs = document.querySelectorAll(".gridSquare");
-
 gridder.addEventListener('click', () => {
     draw.classList.remove('blacked');
     clear.classList.remove('blacked');
     eraser.classList.remove('blacked');
     if (gridToggle == 1) {
-        let len = divs.length;
+        let len = diva.length;
         for (let i = 0; i < len; i++) {
-            divs[i].classList.add("removed");
+            diva[i].classList.add("removed");
         }
         gridToggle = 0;
     }
     else {
-        let len = divs.length;
+        let len = diva.length;
         for (let i = 0; i < len; i++) {
-            divs[i].classList.remove("removed");
+            diva[i].classList.remove("removed");
         }
         gridToggle = 1;
     }
     gridder.classList.add('blacked');
 });
 
-clear.addEventListener('click', () => {
-    draw.classList.remove('blacked');
-    gridder.classList.remove('blacked');
-    eraser.classList.remove('blacked');
-    let len = divs.length;
-    for (let i = 0; i < len; i++) {
-        divs[i].style.backgroundColor = '#FFFFFF';
-    }
-    clear.classList.add('blacked');
-})
-
-function changeColor(e) {
-    if (color == 1) {
-        e.target.style.backgroundColor = currentColor;
-    }
-    else if (color == 0)
-        e.target.style.backgroundColor = '#FFFFFF';
+//changes while the mouse moves
+slider.onmousemove = (e) => {
+    gridValue = e.target.value;
+    gridValeur.textContent = gridValue + "x" + gridValue;
 }
 
+//goes through the function whenever there is a change in [coloring]
+coloring.onchange = (e) => setCurrentColor(e.target.value);
+
+slider.onchange = (e) => setCurrentSize(e.target.value);
+
+clear.addEventListener('click', () => {
+    cleared();
+});
+
+// divs.onchange = (e) => divs = document.querySelectorAll('.gridSquare');
+
+divs = document.querySelectorAll('.gridSquare');
 divs.forEach(div => div.addEventListener('mouseover', changeColor));
 
-draw.classList.add('blacked');
+
+
+
+
