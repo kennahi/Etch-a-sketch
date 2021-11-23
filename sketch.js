@@ -28,9 +28,6 @@ draw.classList.add('blacked');
 function changeColor(e) {
     if (color == 1) {
         e.target.style.backgroundColor = currentColor;
-        // e.target.style.border = '0px';
-        // e.target.setAttribute('style', 'backgroundColor:' + currentColor);
-        
     }
     else if (color == 0)
         e.target.style.backgroundColor = '#FFFFFF';
@@ -57,7 +54,6 @@ function erased() {
     clear.classList.remove('blacked');
     gridder.classList.remove('blacked');
 }
-
 
 function setCurrentColor(newColor) {
     currentColor = newColor;
@@ -101,16 +97,6 @@ function setupGrid() {
 }
 
 /*---------------------events--------------*/
-
-
-
-// let gridSquare = document.querySelectorAll(".gridSquare");
-
-// let divs = document.querySelectorAll(".gridSquare");
-
-
-
-
 
 eraser.addEventListener('click', () => {
     erased();
@@ -161,8 +147,6 @@ slider.onchange = (e) => setCurrentSize(e.target.value);
 clear.addEventListener('click', () => {
     cleared();
 });
-
-// divs.onchange = (e) => divs = document.querySelectorAll('.gridSquare');
 
 divs = document.querySelectorAll('.gridSquare');
 divs.forEach(div => div.addEventListener('mouseover', changeColor));
