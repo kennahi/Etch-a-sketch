@@ -1,3 +1,8 @@
+@font-face {
+    font-family: AntipastoPro;
+    src: url('AntipastoPro-Medium_trial.ttf');
+}
+
 .canvas {
     border: black;
     border-style: solid;
@@ -40,16 +45,18 @@ html {
     padding-bottom: 45px;
     padding-top: 30px;
     font-size: 50px;
+    font-family: AntipastoPro;
 }
 
 .options {
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 2px;
+    margin-right: 40px;
 }
 
 .content {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 body {
@@ -57,7 +64,7 @@ body {
 }
 
 .clear {
-margin-top: 250px;
+    margin-top: 10px;
 }
 
 .gridSize {
@@ -68,11 +75,16 @@ margin-top: 250px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.colorPicker {
+    width:190px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
 .eraser,
 .draw,
 .gridLines,
 .clear,
-.color,
 .rainbow
  {
     border: solid 1px black;
@@ -81,13 +93,14 @@ margin-top: 250px;
     font-family: monospace;
     font-size: 20px;
     text-align: center;
+    border-radius: 7px;
 }
 
 .eraser:hover,
 .draw:hover,
 .gridLines:hover,
 .clear:hover,
-.color:hover,
+.colorPicker:hover,
 .rainbow:hover {
     background-color: lightgrey;
 }
