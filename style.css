@@ -72,7 +72,9 @@ margin-top: 250px;
 .draw,
 .gridLines,
 .clear,
-.color {
+.color,
+.rainbow
+ {
     border: solid 1px black;
     padding: 10px 25px;
     margin-bottom: 10px;
@@ -85,6 +87,7 @@ margin-top: 250px;
 .draw:hover,
 .gridLines:hover,
 .clear:hover,
-.color:hover {
+.color:hover,
+.rainbow:hover {
     background-color: lightgrey;
 }
