@@ -94,13 +94,20 @@ body {
     font-size: 20px;
     text-align: center;
     border-radius: 7px;
+    transition: 0.24s ease-in-out;
 }
 
-.eraser:hover,
+.hover:hover {
+    background-color: lightgrey;
+    transform: scale(1.02);
+}
+
+/* .eraser:hover,
 .draw:hover,
 .gridLines:hover,
 .clear:hover,
 .colorPicker:hover,
 .rainbow:hover {
     background-color: lightgrey;
-}
+    transform: scale(1.02);
+} */

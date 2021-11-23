@@ -22,6 +22,7 @@ let divs;
 
 setupGrid();
 draw.classList.add('blacked');
+draw.classList.remove('hover');
 
 /* ----------functions ----------*/
 
@@ -45,16 +46,21 @@ function randomColor(Colorbow) {
 }
 
 function cleared() {
+    clear.classList.add('blacked');
+    clear.classList.remove('hover');
     draw.classList.remove('blacked');
     gridder.classList.remove('blacked');
     eraser.classList.remove('blacked');
     Rainbow.classList.remove('blacked');
+    draw.classList.add('hover');
+    eraser.classList.add('hover');
+    gridder.classList.add('hover');
+    Rainbow.classList.add('hover');
 
     let len = diva.length;
     for (let i = 0; i < len; i++) {
         diva[i].style.backgroundColor = '#FFFFFF';
     }
-    clear.classList.add('blacked');
     color = 3;
 }
 
@@ -64,10 +70,15 @@ function erased() {
     divs.forEach(div => div.addEventListener('mouseover', changeColor));
 
     eraser.classList.add('blacked');
+    eraser.classList.remove('hover');
     draw.classList.remove('blacked');
     clear.classList.remove('blacked');
     gridder.classList.remove('blacked');
     Rainbow.classList.remove('blacked');
+    draw.classList.add('hover');
+    clear.classList.add('hover');
+    gridder.classList.add('hover');
+    Rainbow.classList.add('hover');
 }
 
 function setCurrentColor(newColor) {
@@ -80,6 +91,11 @@ function setCurrentSize(newSize) {
     gridder.classList.remove('blacked');
     eraser.classList.remove('blacked');
     Rainbow.classList.remove('blacked');
+    draw.classList.add('hover');
+    clear.classList.add('hover');
+    gridder.classList.add('hover');
+    eraser.classList.add('hover');
+    Rainbow.classList.add('hover');
 
     currentSize = newSize;
     access = 1;
@@ -123,10 +139,15 @@ Rainbow.addEventListener('click', () => {
     divs.forEach(div => div.addEventListener('mouseover', changeColor));
 
     Rainbow.classList.add('blacked');
+    Rainbow.classList.remove('hover');
     draw.classList.remove('blacked');
     clear.classList.remove('blacked');
     gridder.classList.remove('blacked');
     eraser.classList.remove('blacked');
+    draw.classList.add('hover');
+    clear.classList.add('hover');
+    gridder.classList.add('hover');
+    eraser.classList.add('hover');
 })
 
 eraser.addEventListener('click', () => {
@@ -135,21 +156,31 @@ eraser.addEventListener('click', () => {
 
 draw.addEventListener('click', () => {
     color = 1;
-    divs = document.querySelectorAll('.gridSquare');
-    divs.forEach(div => div.addEventListener('mouseover', changeColor));
-
     draw.classList.add('blacked');
+    draw.classList.remove('hover');
     gridder.classList.remove('blacked');
     clear.classList.remove('blacked');
     eraser.classList.remove('blacked');
     Rainbow.classList.remove('blacked');
+    Rainbow.classList.add('hover');
+    clear.classList.add('hover');
+    gridder.classList.add('hover');
+    eraser.classList.add('hover');
+
+    divs = document.querySelectorAll('.gridSquare');
+    divs.forEach(div => div.addEventListener('mouseover', changeColor));
 });
 
 gridder.addEventListener('click', () => {
+    gridder.classList.remove('hover');
     draw.classList.remove('blacked');
     clear.classList.remove('blacked');
     eraser.classList.remove('blacked');
     Rainbow.classList.remove('blacked');
+    draw.classList.add('hover');
+    clear.classList.add('hover');
+    Rainbow.classList.add('hover');
+    eraser.classList.add('hover');
 
     divs = document.querySelectorAll('.gridSquare');
     divs.forEach(div => div.addEventListener('mouseover', changeColor));
